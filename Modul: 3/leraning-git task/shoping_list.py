@@ -1,6 +1,7 @@
 #your shopping list
 shoping_list = {"Piekarnia": ["Chleb", "bułki", "Pączek"], "Warzywniak": ["Marchew", "Seler", "Rokula"]}
 #uppercase list
+#need solution for capital cases as code coming back with error
 #upper_list = ((k.upper(), v.upper()) for k, v in shoping_list.items())
 #print lists
 for shop, item in shoping_list.items():
