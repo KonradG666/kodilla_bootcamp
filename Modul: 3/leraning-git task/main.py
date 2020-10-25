@@ -1,1 +1,1 @@
-print("'Martwa papuga' to najlepszy skecz grupy Monty Pythona")
+print("'Hiszpańska Inkwizycja' to najlepszy skecz grupy Monty Pythona")
