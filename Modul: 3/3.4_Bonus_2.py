@@ -10,6 +10,7 @@ większą płytę o długości danej zmienną big jesteśmy w stanie zbudować m
 
 Niech funkcja build_bridge zwraca wartość False, jeśli zbudowanie mostu przy założeniu zmiennych small, big oraz goal nie jest możliwe.
 
+
 Na przykład:
 Jeśli goal to 37, small to 2, a big to 5. Wtedy możemy zbudować most, a funkcja powinna
 zwracać wartość True.
