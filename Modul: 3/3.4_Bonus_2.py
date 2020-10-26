@@ -18,6 +18,11 @@ zwracać wartość True.
 7 * big + 1 * small = goal
 7 * 5 + 1 * 2 = 37
 
+
+
+
+
+
 Z drugiej strony, jeśli goal to 37, small to 3, a big to 5. Wtedy NIE możemy zbudować
 mostu, a funkcja powinna zwracać wartość False.
 """
