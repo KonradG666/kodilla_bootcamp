@@ -27,8 +27,15 @@ Z drugiej strony, jeśli goal to 37, small to 3, a big to 5. Wtedy NIE możemy z
 mostu, a funkcja powinna zwracać wartość False.
 """
 def build_bridge(small, big, goal):
-  # goal - odległość do wypełnienia
-  # small - długość mniejszej płyty
+    
+    
+  # goal - odległość do wypełnienia  
+  # small - długość mniejszej płyty    
   # big - długość większej płyty
-    return pass # Zwróć wartość True jeśli można zbudować most
-                #lub False jeśli nie możemy go zbudować
+    
+    while small+big*7 == goal:
+      return True
+    else:
+      return False
+
+build_bridge(3, 5, 37)
