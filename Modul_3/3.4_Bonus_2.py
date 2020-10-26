@@ -10,7 +10,6 @@ większą płytę o długości danej zmienną big jesteśmy w stanie zbudować m
 
 Niech funkcja build_bridge zwraca wartość False, jeśli zbudowanie mostu przy założeniu zmiennych small, big oraz goal nie jest możliwe.
 
-
 Na przykład:
 Jeśli goal to 37, small to 2, a big to 5. Wtedy możemy zbudować most, a funkcja powinna
 zwracać wartość True.
@@ -18,24 +17,14 @@ zwracać wartość True.
 7 * big + 1 * small = goal
 7 * 5 + 1 * 2 = 37
 
-
-
-
-
-
 Z drugiej strony, jeśli goal to 37, small to 3, a big to 5. Wtedy NIE możemy zbudować
 mostu, a funkcja powinna zwracać wartość False.
 """
 def build_bridge(small, big, goal):
-    
-    
   # goal - odległość do wypełnienia  
   # small - długość mniejszej płyty    
-  # big - długość większej płyty
-    
+  # big - długość większej płyty    
     while small+big*7 == goal:
       return True
     else:
       return False
-
-build_bridge(3, 5, 37)
