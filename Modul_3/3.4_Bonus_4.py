@@ -15,10 +15,21 @@ Wynik powinien zawierać następujące elementy:
 {(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)}
 """
 dice = {}
+#dice = {(num1, num2) for num1 in range(1,7) for num2 in range(1,7) if (num1+num2) == num}
 
 def dice_game(num):
-    dice = {(num1, num2) for num1 in range(1,7) for num2 in range(1,7) if (num1+num2) == num}
-    print(dice)
 
+    for num in range(2, 12):
+        for num1 in range(1, 7):
+            for num2 in range(1, 7):
+                if num1 + num2 == num:
+                    return (num1, num2)
+#        d = (num1, num2) for num1 in range(1,7) for num2 in range(1,7) if (num1+num2) == num)
+    # if letter in append the name
+                if num in dice:
+                    dice[num].append(num1, num2)
+    # if letter not in create new and append
+                else:
+                    dice[num] = [num]
 
 dice_game(7)
