@@ -16,11 +16,14 @@ Wynik powinien zawierać następujące elementy:
 """
 dice = {}
 def dice_game(num):
-    x = []
-    for num in range(2, 13):
-        if num not in dice.keys():
-            x = list((num1, num2) for num1 in range(1,7) for num2 in range(1,7) if (num1+num2) == num)
-            dice[num] = x
-    print(dice)      
-
-dice_game(7)
+    for num1 in range(1, 7):
+        for num2 in range(1,7):
+            if num1 + num2 == num:
+                if num in dice:
+                    dice[num].append((num1, num2))
+                else:
+                    dice[num] = [(num1, num2)]
+for num in range(2,13):
+    dice_game(num)
+print(dice)
+print(f"7: {dice[7]}")
