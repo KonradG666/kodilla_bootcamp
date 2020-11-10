@@ -22,16 +22,18 @@ Podaj działanie, posługując się odpowiednią liczbą:
                 print("Mnożenie")
                 mulit_more()
 
-            x1 = int(input("Podaj pierwszą liczbę: "))
-            x2 = int(input("Podaj drugą liczkę: "))
+            #x1 = int(input("Podaj pierwszą liczbę: "))
+            #x2 = int(input("Podaj drugą liczkę: "))
             #subtraction
             if operation == 2:
                 print("Odejmowanie")
+                set_input()
                 print(f"Odejmuję {x2} od {x1}")
                 print(f"Wynik to: ", x1 - x2)
             #division
             elif operation == 4:
                 print("Dzielenie")
+                set_input()
                 print(f"Dzielę {x1} przez {x2}")
                 print(f"Wynik to: ", x1 / x2)
         #break if not in range
@@ -58,8 +60,7 @@ def add_more_numbers():
         print(f"Wynik to: ", sum(num))
         again()
     elif special_option.upper() == "N":
-        x = int(input("Podaj pierwszą liczbę: "))
-        y = int(input("Podaj drugą liczkę: "))
+        set_input()
         print(f"Dodaje {x} i {y}")
         print(f"Wynik to: ", x + y)
         again()
@@ -73,12 +74,15 @@ def mulit_more():
         print(f"Wynik to: ", numpy.prod(num))
         again()
     elif special_option2.upper() == "N":
-        x = int(input("Podaj pierwszą liczbę: "))
-        y = int(input("Podaj drugą liczkę: "))
+        set_input()
         print(f"Mnożę {x} razy {y}")
         print(f"Wynik to: ", x * y)
         again()
 
-    
+#set input
+def set_input():
+    x = int(input("Podaj pierwszą liczbę: "))
+    y = int(input("Podaj drugą liczkę: "))
+    return x, y
 
 calculate()
