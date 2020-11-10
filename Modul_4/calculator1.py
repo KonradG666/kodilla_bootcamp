@@ -2,16 +2,17 @@ import numpy
 
 def calculate():
     operation = int(input("""
-Podaj działanie, posługując się odpowiednią liczbą:
+Wybierz funkcję, posługując się adekwatną liczbą:
 1-Dodawanie
 2-Odejmowanie
 3-Mnożenie
 4-Dzielenie
+5-Exit
 """))
     
     while True:
         #check input
-        if operation in (1,2,3,4):
+        if operation in (1,2,3,4,5):
             
             #addition
             if operation == 1:
@@ -21,22 +22,23 @@ Podaj działanie, posługując się odpowiednią liczbą:
             elif operation == 3:
                 print("Mnożenie")
                 mulit_more()
-
-            x1 = int(input("Podaj pierwszą liczbę: "))
-            x2 = int(input("Podaj drugą liczkę: "))
             #subtraction
             if operation == 2:
                 print("Odejmowanie")
-                print(f"Odejmuję {x2} od {x1}")
-                print(f"Wynik to: ", x1 - x2)
+                x, y =set_input()
+                print(f"Odejmuję {y} od {x}")
+                print(f"Wynik to: ", x - y)
             #division
             elif operation == 4:
                 print("Dzielenie")
-                print(f"Dzielę {x1} przez {x2}")
-                print(f"Wynik to: ", x1 / x2)
+                x, y =set_input()
+                print(f"Dzielę {x} przez {y}")
+                print(f"Wynik to: ", x / y)
+            elif operation == 5:
+                kill_switch()
         #break if not in range
         else:
-            print("Nie ma takiej funkcji! Zacznij jeszcze raz.")
+            print("Nie ma takiej funkcji! Spróbuj jeszcze raz.")
             calculate()
         #again?
         again()
@@ -47,8 +49,7 @@ def again():
     if call_it_again.upper() == "Y":
         calculate()
     elif call_it_again.upper() == "N":
-        print("Do widzenia.")
-        exit()
+        kill_switch()
 #adding more that two numbers
 def add_more_numbers():
     special_option = input("Chcesz dodać więcej cyfr jednocześnie? Y/N:")
@@ -58,8 +59,7 @@ def add_more_numbers():
         print(f"Wynik to: ", sum(num))
         again()
     elif special_option.upper() == "N":
-        x = int(input("Podaj pierwszą liczbę: "))
-        y = int(input("Podaj drugą liczkę: "))
+        x, y = set_input()
         print(f"Dodaje {x} i {y}")
         print(f"Wynik to: ", x + y)
         again()
@@ -73,12 +73,19 @@ def mulit_more():
         print(f"Wynik to: ", numpy.prod(num))
         again()
     elif special_option2.upper() == "N":
-        x = int(input("Podaj pierwszą liczbę: "))
-        y = int(input("Podaj drugą liczkę: "))
+        x, y = set_input()
         print(f"Mnożę {x} razy {y}")
         print(f"Wynik to: ", x * y)
         again()
 
-    
+#set input
+def set_input():
+    x = int(input("Podaj pierwszą liczbę: "))
+    y = int(input("Podaj drugą liczkę: "))
+    return x, y
+#off
+def kill_switch():
+    print("Do widzenia.")
+    exit()
 
 calculate()
