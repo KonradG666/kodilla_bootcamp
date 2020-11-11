@@ -8,8 +8,7 @@ Wybierz funkcję, posługując się adekwatną liczbą:
 3-Mnożenie
 4-Dzielenie
 5-Exit
-"""))
-    
+"""))    
     while True:
         #check input
         if operation in (1,2,3,4,5):
@@ -27,13 +26,13 @@ Wybierz funkcję, posługując się adekwatną liczbą:
                 print("Odejmowanie")
                 x, y =set_input()
                 print(f"Odejmuję {y} od {x}")
-                print(f"Wynik to: ", x - y)
+                print(f"Wynik to: ", format(x-y, '7.2f'))
             #division
             elif operation == 4:
                 print("Dzielenie")
                 x, y =set_input()
                 print(f"Dzielę {x} przez {y}")
-                print(f"Wynik to: ", x / y)
+                print(f"Wynik to: ", format(x / y, '7.2f'))
             elif operation == 5:
                 kill_switch()
         #break if not in range
@@ -59,7 +58,7 @@ def add_more_numbers():
         print(f"Wynik to: ", sum(num))
         again()
     elif special_option.upper() == "N":
-        x, y = set_input()
+        x,y = set_input()
         print(f"Dodaje {x} i {y}")
         print(f"Wynik to: ", x + y)
         again()
@@ -68,9 +67,9 @@ def add_more_numbers():
 def mulit_more():
     special_option2 = input("Chcesz pomnożyć więcej cyfr jednocześnie? Y/N:")
     if special_option2.upper() == "Y":
-        num = list(map(int, input("Podaj liczby (oddzielone spacją): ").split()))
+        num = list(map(float, input("Podaj liczby (oddzielone spacją): ").split()))
         print(f"Mnożę: {num} przez {num}")
-        print(f"Wynik to: ", numpy.prod(num))
+        print(f"Wynik to: ", round(numpy.prod(num),2))
         again()
     elif special_option2.upper() == "N":
         x, y = set_input()
@@ -80,8 +79,8 @@ def mulit_more():
 
 #set input
 def set_input():
-    x = int(input("Podaj pierwszą liczbę: "))
-    y = int(input("Podaj drugą liczkę: "))
+    x = float(input("Podaj pierwszą liczbę: "))
+    y = float(input("Podaj drugą liczkę: "))
     return x, y
 #off
 def kill_switch():
