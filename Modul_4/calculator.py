@@ -11,7 +11,7 @@ Wybierz funkcję, posługując się adekwatną liczbą:
 """))    
     while True:
         #check input
-        if operation in (1,2,3,4,5):
+        if operation in (1,2,3,4,5,6):
             
             #addition
             if operation == 1:
@@ -35,6 +35,8 @@ Wybierz funkcję, posługując się adekwatną liczbą:
                 print(f"Wynik to: ", format(x / y, '7.2f'))
             elif operation == 5:
                 kill_switch()
+            elif operation == 6:
+                set_decimals()
         #break if not in range
         else:
             print("Nie ma takiej funkcji! Spróbuj jeszcze raz.")
@@ -69,19 +71,25 @@ def mulit_more():
     if special_option2.upper() == "Y":
         num = list(map(float, input("Podaj liczby (oddzielone spacją): ").split()))
         print(f"Mnożę: {num} przez {num}")
-        print(f"Wynik to: ", round(numpy.prod(num),2))
+        print(f"Wynik to: ", format(numpy.prod(num),'7.2f'))
         again()
     elif special_option2.upper() == "N":
         x, y = set_input()
         print(f"Mnożę {x} razy {y}")
-        print(f"Wynik to: ", x * y)
+        print(f"Wynik to: ", format(( x * y), '7.2f'))
         again()
-
 #set input
 def set_input():
     x = float(input("Podaj pierwszą liczbę: "))
     y = float(input("Podaj drugą liczkę: "))
     return x, y
+#how many zeros
+def set_decimals():
+    None
+    print("Function not completed")
+    #point_format = input("How many zeros after comma?: ")
+    #add global value for '7.2f' and then use to change print
+    #'7.2f'.replace("2",point_format)
 #off
 def kill_switch():
     print("Do widzenia.")
