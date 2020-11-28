@@ -9,11 +9,7 @@ class BusinessCard:
         self.company = company
         self.job_title = job_title
         self.email = email
-        self.all = name,surname,company,job_title,email
-        
-        #value
-        self._fullname_length = 0
-        
+        self.all = name,surname,company,job_title,email     
 
     def __str__(self):
         return f"{self.name} {self.surname} {self.email}"
@@ -26,20 +22,9 @@ class BusinessCard:
 
     @property
     def full_length(self):
-        return self._fullname_length
-
-    @full_length.setter
-    def body_count(self, new_len):
-        print_limit = 20                        # characters to fit on a lable
         name_len = len(self.name)
         surname_len = len(self.surname)
-        new_len = (name_len + surname_len)+1
-        if new_len <= print_limit:
-            self._fullname_length = new_len
-        else:
-            raise ValueError(f"Value exceeds printing space or there is null chracters.")
-                
-       
+        return name_len + surname_len +1      
   
 card_a = BusinessCard(name="Ronan",surname="Gray",company="Dee's Drive-In",job_title="Tree trimmer",email="RonanGray@teleworm.us")
 card_b = BusinessCard(name="Hector",surname="Aitken",company="Mansmann's Department Store",job_title="Diagnostic medical sonographer",email="HectorAitken@teleworm.us")
@@ -48,7 +33,9 @@ card_d = BusinessCard(name="Belinda",surname="Banks",company="Benesome",job_titl
 card_e = BusinessCard(name="Kazimiera",surname="Kowalczyk",company="National Lumber",job_title="Nannie",email="KazimieraKowalczyk@armyspy.com")
 card_x = BusinessCard(name = f.first_name(), surname = f.last_name(), company = f.company(), job_title = f.job(), email = f.email())
 
+#sorting cards
 cards = [card_a, card_b, card_c, card_d, card_e, card_x]
+
 by_name = sorted(cards, key=lambda BusinessCard: BusinessCard.name)
 by_surname = sorted(cards, key=lambda BusinessCard: BusinessCard.surname)
 by_email = sorted(cards, key=lambda BusinessCard: BusinessCard.email) 
@@ -56,13 +43,10 @@ by_email = sorted(cards, key=lambda BusinessCard: BusinessCard.email)
 for card in cards:
     print(f"{card.name} {card.surname}: {card.company}, {card.email}")
 print("-"*60)
-  
 
 
-card_a.contact()
-card_a.full_length
-
-
+card_b.contact()
+print(f"Print will take up to {card_b.full_length} characters")
 
 
 
