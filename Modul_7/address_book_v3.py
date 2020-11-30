@@ -59,7 +59,6 @@ card_d2 = BusinessContact(name="Belinda",surname="Banks",phone="+44 070 1275 811
 card_e2 = BusinessContact(name="Kazimiera",surname="Kowalczyk",phone="+48 67 901 44 25",company="National Lumber",job_title="Nannie",work_phone="+48 88 547 84 48", email="KazimieraKowalczyk@armyspy.com")
 card_x2 = BusinessContact(name = f.first_name(), surname = f.last_name(), phone = f.phone_number(), company = f.company(), job_title = f.job(),work_phone= f.phone_number(),  email = f.email())
 card_y2 = BusinessContact(name = f.first_name(), surname = f.last_name(), phone = f.phone_number(), company = f.company(), job_title = f.job(),work_phone= f.phone_number(),  email = f.email())
-
 #sorting cards
 cards = [card_a1, card_b1, card_c1, card_d1, card_e1, card_x1]
 def sorting():
@@ -157,8 +156,7 @@ def create_base():
                 )
 def set_input():
     card_num = int(input("How many contact do you want to create? "))
-    return card_num
-    
+    return card_num    
 #main menu
 def menu():
     op_contacts = "Contacts"
