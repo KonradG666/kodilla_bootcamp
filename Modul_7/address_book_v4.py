@@ -42,6 +42,8 @@ CONTACT_BASE = "base"
 CONTACT_BUSINESS = "business"
 ALLOWED_CONTACTS = [CONTACT_BASE, CONTACT_BUSINESS]
 
+
+
 def run():
     while True:
         op  = input("Choose your action from:\n- "+"\n- ".join(ALLOWED_OPERATIONS))
@@ -53,7 +55,15 @@ def run():
             exit()
         
         if op == OP_CREATE:
-            contact = create_contact()
+            contact = create_contact(
+                name = f.first_name(), 
+                surname = f.last_name(), 
+                phone = f.phone_number(), 
+                company = f.company(), 
+                job_title = f.job(),
+                work_phone= f.phone_number(),  
+                email = f.email()
+                )
             database.append(contact)
         elif op == OP_SORT:
             sort_contacts()
@@ -61,13 +71,13 @@ def run():
             print(database)
 
 
-def create_contact(name = f.first_name(), surname = f.last_name(), phone = f.phone_number(), company = f.company(), job_title = f.job(),work_phone= f.phone_number(),  email = f.email()):
+def create_contact(name, surname, phone , company, job_title, work_phone, email):
     while True:
         op = input("What card do you want to create ?\n- " + "\n- ".join(ALLOWED_CONTACTS))
         if op not in ALLOWED_CONTACTS:
             print(f"Input error. {op} not in options list")
             continue
-        if op == "Business":
+        if op == CONTACT_BUSINESS:
             return BusinessContact(
                 name = name,
                 surname = surname,
@@ -76,10 +86,10 @@ def create_contact(name = f.first_name(), surname = f.last_name(), phone = f.pho
                 job_title = job_title,
                 work_phone= work_phone,
                 email = email
-            )
-        elif op == "Base":
+                )
+        elif op == CONTACT_BASE:
             return BaseContact(name = name, surname = surname, phone = phone, email = email)
-        run()
+
 
 #start
 run()

@@ -67,6 +67,8 @@ ALLOWED_CREATE = [OP_BASE, OP_BUSINESS, OP_EXIT]
 fake_base_cards = []
 fake_business_cards = []
 
+
+
 def sort_by_name():
     return sorted(fake_base_cards, key=lambda Card: Card.name)
 def sort_by_surname():
@@ -77,7 +79,6 @@ def sort_by_email():
 #creating new contacts
 @Timer(text="Contacts created in {:.2f} seconds")
 def create_business():
-    #card_num = int(input("How many contact do you want to create? "))               # need to be replaced with set_input() to remove time delay with manual imput 
     for index in enumerate(range(0,card_num)):
         fake_business_cards.append( 
             BusinessContact(
@@ -91,7 +92,6 @@ def create_business():
                 )
 @Timer(text="Contacts created in {:.2f} seconds")
 def create_base():
-    #card_num = int(input("How many contact do you want to create? "))               # need to be replaced with set_input() to remove time delay with manual imput
     for index in enumerate(range(0,card_num)):
         fake_base_cards.append(
             BaseContact(
@@ -118,12 +118,12 @@ def contacts():
             op_c = input("What do you want to create or empty for return?\n- "+"\n- ".join(ALLOWED_CREATE))
             if op_c == OP_BASE:
                 card_num = set_input()                                         # NameError: name 'card_num' is not defined
-                create_base()
-                print("Base card created")
+                create_base(*args)
+                print(f"{card_num} base cards created")
             elif op_c == OP_BUSINESS:
                 card_num = set_input()                                         # NameError: name 'card_num' is not defined
                 create_business()
-                print("Business card created")
+                print(f"{card_num} business cards created")
             elif op_c == OP_EXIT:
                 exit("Bye")
             else:
