@@ -67,7 +67,7 @@ ALLOWED_CREATE = [OP_BASE, OP_BUSINESS, OP_EXIT]
 fake_base_cards = []
 fake_business_cards = []
 
-
+card_num = 0
 
 def sort_by_name():
     return sorted(fake_base_cards, key=lambda Card: Card.name)
@@ -117,11 +117,12 @@ def contacts():
         elif op == OP_CREATE:
             op_c = input("What do you want to create or empty for return?\n- "+"\n- ".join(ALLOWED_CREATE))
             if op_c == OP_BASE:
-                card_num = set_input()                                         # NameError: name 'card_num' is not defined
-                create_base(*args)
+                global card_num                                                 #working on global to ensure corect value assignet to functions
+                card_num = set_input()                                        
+                create_base()
                 print(f"{card_num} base cards created")
             elif op_c == OP_BUSINESS:
-                card_num = set_input()                                         # NameError: name 'card_num' is not defined
+                card_num = set_input()                                        
                 create_business()
                 print(f"{card_num} business cards created")
             elif op_c == OP_EXIT:
