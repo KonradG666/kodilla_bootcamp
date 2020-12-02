@@ -43,12 +43,12 @@ main_library = [
     TvSeries(title = "Fawlty Towers", release = "1975", genre = "sitcom", episode = "E03", season = "S02", watched = 0)
     ]
 
-print(f"movie1 {mov_1.current_views}")
-mov_1.play(100)
-print(f"movie1 {mov_1.current_views}")
-print(f"movie2 {mov_2.current_views}")
-mov_2.play(10)
-print(f"movie2 {mov_2.current_views}")
+print(f"movie1 {Movie.current_views}")
+Movie.play(100)
+print(f"movie1 {Movie.current_views}")
+print(f"movie2 {Movie.current_views}")
+Movie.play(10)
+print(f"movie2 {Movie.current_views}")
 
 def get_movies():
     for i in main_library:
