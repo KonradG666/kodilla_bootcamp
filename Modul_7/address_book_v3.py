@@ -67,7 +67,6 @@ ALLOWED_CREATE = [OP_BASE, OP_BUSINESS, OP_EXIT]
 fake_base_cards = []
 fake_business_cards = []
 
-card_num = 0
 
 def sort_by_name():
     return sorted(fake_base_cards, key=lambda Card: Card.name)
@@ -78,7 +77,7 @@ def sort_by_email():
 
 #creating new contacts
 @Timer(text="Contacts created in {:.2f} seconds")
-def create_business():
+def create_business(card_num):
     for index in enumerate(range(0,card_num)):
         fake_business_cards.append( 
             BusinessContact(
@@ -91,7 +90,7 @@ def create_business():
                 email = f.email())
                 )
 @Timer(text="Contacts created in {:.2f} seconds")
-def create_base():
+def create_base(card_num):
     for index in enumerate(range(0,card_num)):
         fake_base_cards.append(
             BaseContact(
@@ -117,13 +116,12 @@ def contacts():
         elif op == OP_CREATE:
             op_c = input("What do you want to create or empty for return?\n- "+"\n- ".join(ALLOWED_CREATE))
             if op_c == OP_BASE:
-                global card_num                                                 #working on global to ensure corect value assignet to functions
                 card_num = set_input()                                        
-                create_base()
+                create_base(card_num)
                 print(f"{card_num} base cards created")
             elif op_c == OP_BUSINESS:
                 card_num = set_input()                                        
-                create_business()
+                create_business(card_num)
                 print(f"{card_num} business cards created")
             elif op_c == OP_EXIT:
                 exit("Bye")
