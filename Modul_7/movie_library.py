@@ -42,27 +42,35 @@ main_library = [
     TvSeries(title = "South Park", release = "1997", genre = "animation", episode = "E05", season = "S14", watched = 0),
     TvSeries(title = "Fawlty Towers", release = "1975", genre = "sitcom", episode = "E03", season = "S02", watched = 0)
     ]
-
+"""
 print(f"movie1 {Movie.current_views}")
 Movie.play(100)
 print(f"movie1 {Movie.current_views}")
 print(f"movie2 {Movie.current_views}")
 Movie.play(10)
 print(f"movie2 {Movie.current_views}")
-
+"""
 def get_movies():
+    pass
+    """
     for i in main_library:
         if i == Movie:
             return i
+    """
 def get_series():
+    pass
+    """
     for i in main_library:
         if i == TvSeries:
-            return i
+    """        return i
 def search():
+    pass
+    """
     look_up = input("Type the title you are lookig for: ")
     for i in main_library:
         if i == look_up:
             print(i)
+    """        
 def generate_viewes():
     pass
 
