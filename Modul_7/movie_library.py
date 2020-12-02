@@ -1,18 +1,4 @@
-library = [
-    mov_1 = Movie(title = "Mad Max 2", release = "1981", genre = "action", watch = 0),
-    mov_2 = Movie(title = "Die Hard", release = "1988", genre = "action", watch = 0),
-    mov_3 = Movie(title = "Nausicaa of the Valley of the Wind", release = "1984", genre = "animation", watch = 0),
-    mov_4 = Movie(title = "Castle in the Sky", release = "1986", genre = "animation", watch = 0),
-    mov_5 = Movie(title = "Monty Python's Life of Brian", release = "1979", genre = "comedy", watch = 0),
-    mov_6 = Movie(title = "Blade Runner", release = "1982", genre = "syfy", watch = 0),
-    seri_1 = TvSeries(title = "The Soptanos", release = "1999", genre = "crime", episode = "E01", season = "S01", watch = 0),
-    seri_2 = TvSeries(title = "The Office", release = "2005", genre = "sitcom", episode = "E02", season = "S04", watch = 0),
-    seri_3 = TvSeries(title = "Doctor Who", release = "1963", genre = "syfy", episode = "E01", season = "S08", watch = 0),
-    seri_4 = TvSeries(title = "Battlestar Galactica", release = "2004", genre = "syfy", episode = "E04", season = "S02", watch = 0),
-    seri_5 = TvSeries(title = "South Park", release = "1997", genre = "animation", episode = "E05", season = "S14", watch = 0),
-    seri_6 = TvSeries(title = "Fawlty Towers", release = "1975", genre = "sitcom", episode = "E03", season = "S02", watch = 0)
-    ]
-
+#movies library
 class Movie():
     
     def __init__(self, title, release, genre, watched):
@@ -22,6 +8,7 @@ class Movie():
         self.watched = watched
         #vareable
         self._watched = watched
+        
 
     def __str__(self):
         return f"{self.title} {self.release}"
@@ -42,29 +29,77 @@ class TvSeries(Movie):
     def __str__(self):
         return f"{self.title} {self.season}{self.episode}"
 
-movie1 = Movie(title="Requiem",release = 1997, genre = "Nori", watched = 0)
-movie2 = Movie(title="Requiem",release = 1997, genre = "Nori", watched = 0)
-series = TvSeries(title = "The Bob", release = 2000, genre = "triller", episode= "E05", season = "S02", watched= 0)
+main_library = [
+    {"Movie":"title": "Mad Max 2", release = "1981", genre = "action", watched = 0)},
+    {"Movie":"title": "Die Hard", release = "1988", genre = "action", watched = 0)},
+    {"Movie":"title": "Nausicaa of the Valley of the Wind", release = "1984", genre = "animation", watched = 0)},
+    {"Movie":"title": "Castle in the Sky", release = "1986", genre = "animation", watched = 0)},
+    {"Movie":"title": "Monty Python's Life of Brian", release = "1979", genre = "comedy", watched = 0)},
+    {"Movie":"title": "Blade Runner", release = "1982", genre = "syfy", watched = 0)},
+    {"TvSeries":"title": "The Soptanos", release = "1999", genre = "crime", episode = "E01", season = "S01", watched = 0)},
+    {"TvSeries":"title": "The Office", release = "2005", genre = "sitcom", episode = "E02", season = "S04", watched = 0)},
+    {"TvSeries":"title": "Doctor Who", release = "1963", genre = "syfy", episode = "E01", season = "S08", watched = 0)},
+    {"TvSeries":"title": "Battlestar Galactica", release = "2004", genre = "syfy", episode = "E04", season = "S02", watched = 0)},
+    {"TvSeries":"title": "South Park", release = "1997", genre = "animation", episode = "E05", season = "S14", watched = 0)},
+    {"TvSeries":"title": "Fawlty Towers", release = "1975", genre = "sitcom", episode = "E03", season = "S02", watched = 0)}
+    ]
 
-
-print(f"movie1 {movie1.current_views}")
-movie1.play(100)
-print(f"movie1 {movie1.current_views}")
-print(f"movie2 {movie2.current_views}")
-movie2.play(10)
-print(f"movie2 {movie2.current_views}")
+print(f"movie1 {mov_1.current_views}")
+mov_1.play(100)
+print(f"movie1 {mov_1.current_views}")
+print(f"movie2 {mov_2.current_views}")
+mov_2.play(10)
+print(f"movie2 {mov_2.current_views}")
 
 def get_movies():
-    pass
+    for i in main_library:
+        if i == Movie:
+            return i
 
 def get_series():
-    pass
+    for i in main_library:
+        if i == TvSeries:
+            return i
 
 def search():
-    pass
-
+    look_up = input("Type the title you are lookig for: ")
+    for i in main_library:
+        if i == look_up:
+            print(i)
 def generate_viewes():
     pass
 
 def top_titles():
     pass
+
+#interface
+OP_MOVIES = "get movies"
+OP_SERIES = "get series"
+OP_SEARCH = "search"
+OP_GENERATE = "generate viewes"
+OP_TOP = "top titles"
+OP_EXIT = "exit"
+
+ALLOWED_ACCTIONS = [OP_MOVIES, OP_SERIES, OP_SEARCH, OP_GENERATE, OP_TOP, OP_EXIT]
+
+def run():
+    while True:
+        op = input("Choose your action from:\n- "+"\n- ".join(ALLOWED_ACCTIONS))
+        if op not in ALLOWED_ACCTIONS:
+            print("Input error. Try again.")
+            continue
+        #menu
+        if op == OP_EXIT:
+            exit("Good Bye!")
+        elif op == OP_GENERATE:
+            generate_viewes()
+        elif op == OP_MOVIES:
+            print(get_movies)
+        elif op == OP_SERIES:
+            print(get_series)
+        elif op == OP_SEARCH:
+            search()
+        elif op == OP_TOP:
+            print(top_titles)
+
+run()
