@@ -9,7 +9,7 @@ class Movie():
         self.watched = watched    
 
     def __str__(self):
-        return f"{self.title} - {self.release} : {self.watched}"
+        return f"{self.title} - {self.release} : has been watched: {self.watched}"
 
     @property
     def current_views(self):
@@ -25,7 +25,7 @@ class TvSeries(Movie):
         self.season = season
 
     def __str__(self):
-        return f"{self.title}: {self.season}{self.episode} - {self.watched}"
+        return f"{self.title}: {self.season}{self.episode} - has been watched: {self.watched}"
 
 main_library = [
     Movie(title = "Mad Max 2", release = "1981", genre = "action", watched = 0),
@@ -43,40 +43,45 @@ main_library = [
     ]
 
 def get_movies():
-    pass
+    for i in main_library:
+        print(i)
+
 def get_series():
     pass    
 def search():
     pass
 def top_titles():
     pass
+def get():
+    pass
 
+#generator
 def ten_times():
     for i in range(10):
         generate_viewes()
 def generate_viewes():
     elements_index = pick_element()
     add_views(elements_index)
-    return f"{main_library[elements_index]} has been watched: {main_library[elements_index].current_views}"
+    return main_library[elements_index], main_library[elements_index].current_views
 def pick_element():
     elements =(len(main_library)) 
     elements_index= randint(0,(elements-1))
     return elements_index    
 def add_views(elements_index):
     views = randint(1,100)
-    main_library[elements_index].play(views)
-
-def get_library():
+    return main_library[elements_index].play(views)
+#print library
+def show_library():
     print("Main Library:")
     for i,v in enumerate(main_library):
         print(f"- {v}")
 
 
-#interface
+#acctions
 OP_MOVIES = "get movies"
 OP_SERIES = "get series"
 OP_SEARCH = "search"
-OP_GENERATE = "generate viewes"
+OP_GENERATE = "vue generate"
 OP_TOP = "top titles"
 OP_SHOW = "library"
 OP_EXIT = "exit"
@@ -104,6 +109,6 @@ def run():
         elif op == OP_TOP:
             print(top_titles)
         elif op == OP_SHOW:
-            get_library()
+            show_library()
 #start
 run()
