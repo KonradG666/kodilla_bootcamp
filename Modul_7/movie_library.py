@@ -20,12 +20,10 @@ ACTIONS = {
     OP_EXIT: "Exit"
 }
 
-
 ALLOWED_ACTIONS = [str(i) for i in ACTIONS.keys()]
 MENU_ITEMS = [f"{index} - {action}" for index, action in ACTIONS.items()]
 
 now = time.strftime("%d/%m/%Y")
-
 
 class Movie():
     
@@ -33,8 +31,7 @@ class Movie():
         self.title = title
         self.release = release
         self.genre = genre
-        self.watched = watched
-        
+        self.watched = watched        
 
     def __str__(self):
         return f"{self.title} - {self.release}"     # : has been watched: {self.watched}"
@@ -48,7 +45,6 @@ class Movie():
     
     def play(self, step):
         self.watched += step
-
 
 class TvSeries(Movie):
     def __init__(self, episode, season, *args, **kwargs):
@@ -92,17 +88,11 @@ def search():
         if v.title == look_up:
             print(main_library[i].__repr__())
 def top_titles():
-    index_list = []
-    new = []
     for i,v in enumerate(main_library):
         if v.watched > 0:
-            index_list.append((i,v.watched))
-    print(index_list)
-    for _,y in index_list:
-        new.append(index_list.sort())
-    print(new)
-
-
+            print(f"{v} with {v.watched} views")
+            
+top_titles()
 #generator
 def generate_views(times = 10):
     for i in range(times):
@@ -110,7 +100,7 @@ def generate_views(times = 10):
         add_views(index)
         current_views = main_library[index].current_views
         title = main_library[index].title
-        #print(f"View generated for {title} ({current_views})")     
+        #print(f"View generated for {title} ({current_views})")
 
 def random_element():
     elements =len(main_library) 
@@ -120,15 +110,11 @@ def add_views(index):
     views = randint(1,100)
     return main_library[index].play(views)
 
-generate_views()            
-top_titles()  
-
 #print library
 def show_library():
     print("Main Library:")
     for i,v in enumerate(main_library):
         print(f"- {v}")
-
 
 def menu():
     while True:
@@ -164,4 +150,4 @@ def run():
     print("-"*60 + "\n \t\tMain Menu\n")
     menu()
 
-#run()
+run()
