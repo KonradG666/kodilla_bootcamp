@@ -1,5 +1,6 @@
 #movies library
 from random import randint
+import time
 
 OP_MOVIES = 1
 OP_SERIES = 2
@@ -22,6 +23,8 @@ ACTIONS = {
 
 ALLOWED_ACTIONS = [str(i) for i in ACTIONS.keys()]
 MENU_ITEMS = [f"{index} - {action}" for index, action in ACTIONS.items()]
+
+now = time.strftime("%d/%m/%Y")
 
 
 class Movie():
@@ -89,9 +92,15 @@ def search():
         if v.title == look_up:
             print(main_library[i].__repr__())
 def top_titles():
+    index_list = []
+    new = []
     for i,v in enumerate(main_library):
         if v.watched > 0:
-            print(f"{v} has been watched {v.watched}")
+            index_list.append((i,v.watched))
+    print(index_list)
+    for _,y in index_list:
+        new.append(index_list.sort())
+    print(new)
 
 
 #generator
@@ -101,7 +110,7 @@ def generate_views(times = 10):
         add_views(index)
         current_views = main_library[index].current_views
         title = main_library[index].title
-        print(f"View generated for {title} ({current_views})")
+        #print(f"View generated for {title} ({current_views})")     
 
 def random_element():
     elements =len(main_library) 
@@ -111,6 +120,9 @@ def add_views(index):
     views = randint(1,100)
     return main_library[index].play(views)
 
+generate_views()            
+top_titles()  
+
 #print library
 def show_library():
     print("Main Library:")
@@ -118,7 +130,7 @@ def show_library():
         print(f"- {v}")
 
 
-def run():
+def menu():
     while True:
         op = input("Choose your action from:\n" + "\n".join(MENU_ITEMS) + "\n")
         if op not in ALLOWED_ACTIONS:
@@ -144,4 +156,12 @@ def run():
         elif op == OP_SHOW:
             show_library()
 #start
+def run():
+    print("\t\tBibloteka filmów\n"+"\t\t"+"-"*16)
+    generate_views()
+    print(f"Najpopularniejsze filmy i seriale dnia {now}\n"+"\t\t"+"*"*10)
+    top_titles()
+    print("-"*60 + "\n \t\tMain Menu\n")
+    menu()
+
 #run()
