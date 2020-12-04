@@ -1,6 +1,4 @@
-from random import randint
 import all_func
-import class_file
 
 OP_MOVIES = 1
 OP_SERIES = 2

@@ -1,5 +1,5 @@
 from random import randint
-import class_file
+
 
 def get_movies():
     for row in main_library:
