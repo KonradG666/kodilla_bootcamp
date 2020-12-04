@@ -1,15 +1,43 @@
 #movies library
 from random import randint
+
+OP_MOVIES = 1
+OP_SERIES = 2
+OP_SEARCH = 3
+OP_GENERATE = 4
+OP_TOP = 5
+OP_SHOW = 6
+OP_EXIT = 7
+
+ACTIONS = {
+    OP_MOVIES: "Get movies",
+    OP_SERIES: "Get series",
+    OP_SEARCH: "Search",
+    OP_GENERATE: "Generate views",
+    OP_TOP: "Top titles",
+    OP_SHOW: "Library",
+    OP_EXIT: "Exit"
+}
+
+
+ALLOWED_ACTIONS = [str(i) for i in ACTIONS.keys()]
+MENU_ITEMS = [f"{index} - {action}" for index, action in ACTIONS.items()]
+
+
 class Movie():
     
     def __init__(self, title, release, genre, watched):
         self.title = title
         self.release = release
         self.genre = genre
-        self.watched = watched    
+        self.watched = watched
+        
 
     def __str__(self):
-        return f"{self.title} - {self.release} : has been watched: {self.watched}"
+        return f"{self.title} - {self.release}"     # : has been watched: {self.watched}"
+
+    def __repr__(self):
+        return f"Movie: {self.title}\n - released in: {self.release}\n - genre: {self.genre}"
 
     @property
     def current_views(self):
@@ -18,6 +46,7 @@ class Movie():
     def play(self, step):
         self.watched += step
 
+
 class TvSeries(Movie):
     def __init__(self, episode, season, *args, **kwargs):
         super().__init__(*args,**kwargs)
@@ -25,7 +54,10 @@ class TvSeries(Movie):
         self.season = season
 
     def __str__(self):
-        return f"{self.title}: {self.season}{self.episode} - has been watched: {self.watched}"
+        return f"{self.title}: {self.season}{self.episode}"     # - has been watched: {self.watched}"
+
+    def __repr__(self):
+        return f"Series: {self.title}\n - first aired: {self.release}\n - genre: {self.genre}\n - content: {self.season}{self.episode}"
 
 main_library = [
     Movie(title = "Mad Max 2", release = "1981", genre = "action", watched = 0),
@@ -43,33 +75,42 @@ main_library = [
     ]
 
 def get_movies():
-    for i in main_library:
-        print(i)
+    for row in main_library:
+        if isinstance(row, Movie):
+            print(f"- {row.title}")
 
 def get_series():
-    pass    
+    for row in main_library:        
+        if isinstance(row, TvSeries):            
+            print(f"- {row.title}")   
 def search():
-    pass
+    look_up = input("What you are looking for? ")
+    for i,v in enumerate(main_library):
+        if v.title == look_up:
+            print(main_library[i].__repr__())
 def top_titles():
-    pass
-def get():
-    pass
+    for i,v in enumerate(main_library):
+        if v.watched > 0:
+            print(f"{v} has been watched {v.watched}")
+
 
 #generator
-def ten_times():
-    for i in range(10):
-        generate_viewes()
-def generate_viewes():
-    elements_index = pick_element()
-    add_views(elements_index)
-    return main_library[elements_index], main_library[elements_index].current_views
-def pick_element():
-    elements =(len(main_library)) 
-    elements_index= randint(0,(elements-1))
-    return elements_index    
-def add_views(elements_index):
+def generate_views(times = 10):
+    for i in range(times):
+        index = random_element()
+        add_views(index)
+        current_views = main_library[index].current_views
+        title = main_library[index].title
+        print(f"View generated for {title} ({current_views})")
+
+def random_element():
+    elements =len(main_library) 
+    return randint(0, elements-1)
+
+def add_views(index):
     views = randint(1,100)
-    return main_library[elements_index].play(views)
+    return main_library[index].play(views)
+
 #print library
 def show_library():
     print("Main Library:")
@@ -77,38 +118,30 @@ def show_library():
         print(f"- {v}")
 
 
-#acctions
-OP_MOVIES = "get movies"
-OP_SERIES = "get series"
-OP_SEARCH = "search"
-OP_GENERATE = "vue generate"
-OP_TOP = "top titles"
-OP_SHOW = "library"
-OP_EXIT = "exit"
-
-ALLOWED_ACCTIONS = [OP_MOVIES, OP_SERIES, OP_SEARCH, OP_GENERATE, OP_TOP, OP_SHOW, OP_EXIT]
-
 def run():
     while True:
-        op = input("Choose your action from:\n- "+"\n- ".join(ALLOWED_ACCTIONS))
-        if op not in ALLOWED_ACCTIONS:
+        op = input("Choose your action from:\n" + "\n".join(MENU_ITEMS) + "\n")
+        if op not in ALLOWED_ACTIONS:
             print("Input error. Try again.")
             continue
         #menu
+        op = int(op)
         if op == OP_EXIT:
-            exit("Good Bye!")
+            print("Good Bye!")
+            exit(0)
         elif op == OP_GENERATE:
-            ten_times()
-            print("viewes generated")
+            generate_views()
         elif op == OP_MOVIES:
-            print(get_movies)
+            print("List of movies:")
+            movies = get_movies()
         elif op == OP_SERIES:
-            print(get_series)
+            print("List of series:")
+            series = get_series()
         elif op == OP_SEARCH:
             search()
         elif op == OP_TOP:
-            print(top_titles)
+            top_titles()            
         elif op == OP_SHOW:
             show_library()
 #start
-run()
+#run()
