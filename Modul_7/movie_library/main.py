@@ -1,4 +1,4 @@
-import all_func
+import utils
 
 OP_MOVIES = 1
 OP_SERIES = 2
@@ -21,30 +21,28 @@ ACTIONS = {
 ALLOWED_ACTIONS = [str(i) for i in ACTIONS.keys()]
 MENU_ITEMS = [f"{index} - {action}" for index, action in ACTIONS.items()]
 
-def run():
+def menu():
     while True:
         op = input("Choose your action from:\n" + "\n".join(MENU_ITEMS) + "\n")
         if op not in ALLOWED_ACTIONS:
             print("Input error. Try again.")
             continue
-        #menu
+
         op = int(op)
         if op == OP_EXIT:
             print("Good Bye!")
             exit(0)
         elif op == OP_GENERATE:
-            generate_views()
+            utils.generate_views()
         elif op == OP_MOVIES:
             print("List of movies:")
-            movies = get_movies()
+            movies = utils.get_movies()
         elif op == OP_SERIES:
             print("List of series:")
-            series = get_series()
+            series = utils.get_series()
         elif op == OP_SEARCH:
-            search()
+            utils.search()
         elif op == OP_TOP:
-            top_titles()            
+            utils.top_titles()            
         elif op == OP_SHOW:
-            show_library()
-#start
-run()
+            utils.show_library()
