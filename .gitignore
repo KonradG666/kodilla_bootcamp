@@ -5,7 +5,11 @@ tester_7.1.py
 .vscode
 
 # ignore that path
-/home/the-barbarian/PycharmProjects/Kodilla/kodilla_bootcamp/Modul_8/Project_0/
-/home/the-barbarian/PycharmProjects/Kodilla/kodilla_bootcamp/Modul_8/Project_1/
-/home/the-barbarian/PycharmProjects/Kodilla/kodilla_bootcamp/Modul_8/flask_intro/
-/home/the-barbarian/PycharmProjects/Kodilla/kodilla_bootcamp/Modul_8/app/
+#1
+Modul_8/Project_0
+#2
+Modul_8/Project_1
+#3
+Modul_8/flask_intro
+#4
+Modul_8/app
