@@ -3,14 +3,14 @@ html {
 }
 body {
     background-color: rgb(88, 87, 87);
-    background-image: url(images/253.jpg);
+    background-image: url('static/253.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .index_body {
-    background-image: url(images/530.jpg);
+    background-image: url('static/530.jpg');
 }
 .container {
     margin-left: auto;
@@ -69,7 +69,7 @@ p {
 a {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    /*text-decoration: none;*/
+    text-decoration: none;
 }
 
 nav a {
@@ -92,4 +92,8 @@ footer p {
 }
 .meet_me {
     background-color: rgba(0, 0, 0, 0.583);
+}
+.contact {
+    background-color: rgba(0, 0, 0, 0.583);
+
 }

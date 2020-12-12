@@ -30,7 +30,7 @@
 
 
 
-            <img src="images/101.png" height="50%" width="50%" alt="lovely photo of me">
+            <img src="{{ url_for('static', filename='101.png')}}"alt="lovely photo of me"><br>
             <a href="https://www.linkedin.com/in/marcin-bizior-792a006b/">Me @ linkedin</a>
 
 
@@ -43,6 +43,7 @@
         </footer>
 
     </div>
+
 
 </body>
 {% endblock %}

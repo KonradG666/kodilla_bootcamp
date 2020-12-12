@@ -28,7 +28,7 @@ def about_me():
 @app.route('/contact_me.html', methods=['POST','GET'])
 def contact_me():
     if request.method == 'POST':
-        message_content = request.form('fname','lname', 'message')
+        message_content = request.form['name','surname', 'message']
         new_message = contacts(content=message_content)
         
         try:
@@ -42,3 +42,14 @@ def contact_me():
         return render_template("contact_me.html")
 
 
+
+
+
+
+
+
+
+
+
+if __name__=="__main__":    
+     app.run(debug=True)
