@@ -28,7 +28,7 @@ def contact_me():
     if request.method == 'POST':
         print("got posted")
         content = (request.form['name'], request.form['surname'], request.form['message'])
-        new_message = contacts(content)
+        new_message = content
         print(content)
         try:
             db.session.add(new_message)
