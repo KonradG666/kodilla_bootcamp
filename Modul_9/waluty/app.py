@@ -27,12 +27,5 @@ def index():
         return render_template('corn_exchange.html')
 
 
-def calc():
-    for dic in currency_list:
-        if dic["currency"] == currency:
-            value = float(dic["ask"])
-            return value
-
-
 if __name__=="__main__":    
      app.run(debug=True)
