@@ -9,5 +9,10 @@ h1 {
     margin: 0 auto;
 }
 
+body {
+    text-align: center;
+}
 
-
+.result {
+    color: darkorange;
+}

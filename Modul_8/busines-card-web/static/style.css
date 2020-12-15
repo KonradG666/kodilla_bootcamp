@@ -99,11 +99,19 @@ footer p {
 .meet_me {
     background-color: rgba(0, 0, 0, 0.583);
 }
-.contact {
+.content {
     background-color: rgba(0, 0, 0, 0.583);
 
 }
 
 label {
     color: white;
+}
+.sender {
+    font-size: 35px;
+    text-align: center;
+    color: tomato;
+}
+.sender2 {
+    font-size: 20px;
 }

@@ -39,20 +39,14 @@
           <input type="submit" value="Calculate">
         </form>
       </div>
-      {% if info %}
-      <div id="results" class="pt-4">
-        <h5>results</h5>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-text">{{info.amount}} {{info.firstCurrency}} </span>
-            <div class="form-control" id="total">
-              {{info.result }} {{info.secondCurrency}}
-            </div>
-          </div>
+
+        <div class="result">
+          <h5>You will get:</h5>
+            <output for="x*x" name="PLN"></output>
+
         </div>
-      </div>
       
-      {% endif %}
+
 
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Contact Me</title>
+<title>Message Send</title>
 {% endblock %}
 
 {% block body %}
@@ -23,8 +23,10 @@
 
         <main>
             <div class="content">
-                <h2>Drop me an message</h2>
-                    <h3>here:</h3>
+                <h2 class="sender">Message send successfully.</h2><br>
+                    <h3 class="sender2">Drop me an message <br>
+                        here:
+                    </h3>
                     <form action="contact_me.html" method="POST">
                         <label for="name">First name:</label><br>
                         <input type="text" id="name" name="name"><br>
