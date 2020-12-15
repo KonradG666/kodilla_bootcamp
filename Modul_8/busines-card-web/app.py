@@ -10,27 +10,26 @@ class contacts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(15), nullable=False)
     surname = db.Column(db.String(15), nullable=True)
-    content = db.Column(db.String(200),nullable=False)
+    message = db.Column(db.String(200),nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 @app.route('/')
-def index():
-    return render_template("index.html")
-    
 @app.route('/index.html')
-def menu():
+def index():
     return render_template("index.html")
 
 @app.route('/about_me.html')
 def about_me():
     return render_template("about_me.html")
 
-@app.route('/contact_me.html', methods=['POST','GET'])
+@app.route('/contact_me.html', methods=['POST', 'GET'])
 def contact_me():
+    print("start def")
     if request.method == 'POST':
-        message_content = request.form['name','surname', 'message']
-        new_message = contacts(content=message_content)
-        
+        print("got posted")
+        content = (request.form['name'], request.form['surname'], request.form['message'])
+        new_message = contacts(content)
+        print(content)
         try:
             db.session.add(new_message)
             db.session.commit()

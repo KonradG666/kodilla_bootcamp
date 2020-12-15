@@ -3,19 +3,22 @@ html {
 }
 body {
     background-color: rgb(88, 87, 87);
-    background-image: url('static/253.jpg');
+    background-image: url('background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .index_body {
-    background-image: url('static/530.jpg');
+    background-image: url('index_backround.jpg');
 }
 .container {
     margin-left: auto;
     margin-right: auto;
     width: 1024px;
+}
+.my-image{
+    border-radius: 52px;
 }
 
 header {
@@ -50,7 +53,8 @@ h2 {
     font-size: 25px;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: left;  
+    text-align: left; 
+    margin-bottom: 0px; 
 }
 
 h3 {
@@ -58,6 +62,8 @@ h3 {
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: left;
+    margin-top: 1px;
+    margin-bottom: 5px;
 }
 
 p {
@@ -96,4 +102,8 @@ footer p {
 .contact {
     background-color: rgba(0, 0, 0, 0.583);
 
+}
+
+label {
+    color: white;
 }
