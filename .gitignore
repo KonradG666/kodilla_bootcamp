@@ -3,8 +3,7 @@ tester_7.py
 tester_7.1.py
 
 .vscode
-__pycache__
-env
+
 
 # ignore that path
 #1
