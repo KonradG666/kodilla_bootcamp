@@ -3,6 +3,8 @@ tester_7.py
 tester_7.1.py
 
 .vscode
+__pycache__
+env
 
 # ignore that path
 #1
@@ -13,3 +15,4 @@ Modul_8/Project_1
 Modul_8/flask_intro
 #4
 Modul_8/app
+
