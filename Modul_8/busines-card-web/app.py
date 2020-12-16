@@ -1,24 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contacts.db'
-app.config['SECRET_KEY'] = "random string"
-
-db = SQLAlchemy(app)
-
-class Contacts(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(15), nullable=False)
-    surname = db.Column(db.String(15), nullable=True)
-    message = db.Column(db.String(400),nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __init__(self, name, surname, message):
-        self.name = name
-        self.surname = surname
-        self.message = message
+from config import app
+from model import Contacts, db
 
 @app.route('/')
 @app.route('/index.html')
