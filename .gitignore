@@ -1,5 +1,6 @@
 #do not track those files
 tester.py
+tester_2.py
 
 .vscode
 env
