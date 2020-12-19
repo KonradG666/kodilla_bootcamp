@@ -1,5 +1,3 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 import requests, csv
 
 response = requests.get("http://api.nbp.pl/api/exchangerates/tables/C?format=json")
@@ -22,5 +20,3 @@ def create_csv():
         writer.writeheader()
         writer.writerows(currency_list)
         print("data loaded to csv file")
-
-create_csv()

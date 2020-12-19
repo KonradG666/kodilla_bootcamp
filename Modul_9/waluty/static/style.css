@@ -5,14 +5,29 @@ h1 {
     text-align: center;
 }
 
+h5 {
+    margin: 15px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
 .content {
     margin: 0 auto;
+
 }
 
 body {
     text-align: center;
 }
 
-.result {
-    color: darkorange;
+.result1 {
+    color: rgb(255, 140, 0);
+    font-size: 35px;
+
+}
+
+.result2 {
+    color: rgb(228, 125, 0);
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
