@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringFiled, TextAreaField, BooleanField
+from wtforms import Form, BooleanField, StringField, TextAreaField, validators
 from wtforms.validators import DataRequired
 
 class TodoForm(FlaskForm):
-    title = StringFiled('title')
-    descryption = TextAreaField('descryption')
-    completed = BooleanField('completed') 
+    title = StringField('Title', validators=[DataRequired()])
+    description = TextAreaField('Descryption', validators=[DataRequired()])
+    done = BooleanField('I accept the task', [validators.DataRequired()]) 
