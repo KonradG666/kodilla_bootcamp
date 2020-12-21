@@ -19,29 +19,16 @@ def songs_list():
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>/", methods=["GET", "POST"])
-def song_details(song_id):
-    print("dupa")
-    song = songs.get(song_id - 1)
-    form = Songs(data=song)
-
-    if request.method == "POST":
-        if form.validate_on_submit():
-            songs.update(song_id - 1, form.data)
-        return redirect(url_for("songs_list"))
-    return render_template("index.html", form=form, song_id=song_id)
-
-
-
-@app.route("/index/<int:song_id>", methods=['DELETE'])
+@app.route("/delete/<int:song_id>")
 def delete_song(song_id):
-    result = songs.delete(song_id)
+    song = songs.delete(song_id)
     if not result:
         abort(404)
-    return jsonify({'result': result})
+        
+    return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>", methods=["PUT"])
+@app.route("/update/<int:song_id>", methods=["PUT"])
 def update_song(song_id):
     song = songs.get(song_id)
     if not song:
@@ -62,6 +49,30 @@ def update_song(song_id):
     }
     song.update(song_id, song)
     return jsonify({'song': song})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.errorhandler(400)
+def bad_request(error):
+    return make_response(jsonify({'error': 'Bad request', 'status_code': 400}), 400)
+
+
+
+
+
+
 
 
 

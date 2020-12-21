@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>Tu tworzymy todo i widzimy listę</title>
+<title>Tu tworzymy todo i widzimy listę</title>
 {% endblock %}
 
 {% block body %}
@@ -9,22 +9,23 @@
 
 <table>
     <thead>
-    <th>Tytuł</th>
-    <th>Zespół</th>
-    <th>Rodzaj muzyki</th>
+        <th>Tytuł</th>
+        <th>Zespół</th>
+        <th>Rodzaj muzyki</th>
+        <th>Actions</th>
     </thead>
-{% for song in songs %}
+    {% for song in songs %}
     <tr>
-        <td><a href="/songs/{{ loop.index }}">{{ song.title }}</a></td>
+        <td>{{ song.title }}</td>
         <td>{{ song.band }}</td>
         <td>{{ song.genre }}</td>
         <td>
-            <a href="/index/{{song.id}}">Delete</a>
+            <a href="/delate/{{song.id}}">Delete</a>
             <br>
             <a href="/update/{{song.id}}">Update</a>
         </td>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
 <div>
     <h2> Dodaj nowy utwór: </h2>
@@ -32,10 +33,10 @@
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}
-                <tr>
-                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
-                    <td>{{ field }}</td>
-                </tr>
+            <tr>
+                <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                <td>{{ field }}</td>
+            </tr>
             {% endfor %}
         </table>
         <input type="submit" value="Submit">
