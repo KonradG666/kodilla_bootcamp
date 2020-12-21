@@ -5,6 +5,7 @@ from models import todos
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "nininini"
 
+@app.route("/", methods=["GET", "POST"])
 @app.route("/todos/", methods=["GET", "POST"])
 def todos_list():
     form = TodoForm()
