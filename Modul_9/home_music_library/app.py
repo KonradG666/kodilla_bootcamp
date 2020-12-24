@@ -22,7 +22,7 @@ def songs_list():
 @app.route("/delete/<int:song_id>")
 def delete_song(song_id):
     song = songs.delete(song_id)
-    if not result:
+    if not song:
         abort(404)
         
     return render_template("index.html", form=form, songs=songs.all(), error=error)

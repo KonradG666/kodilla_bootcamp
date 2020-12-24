@@ -10,3 +10,13 @@ table, th, td {
 body {
     text-align: center;
 }
+
+.comment {
+    font-size: 10px;
+    font-style: italic;
+}
+.starr {
+    font-size: 13px;
+    font-style: normal;
+    color: red
+}
