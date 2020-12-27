@@ -1,48 +1,50 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Tu tworzymy todo i widzimy listę</title>
+<title>Tu dodajemy nowe piosenki i widzimy ich  listę</title>
 {% endblock %}
 
 {% block body %}
-<h2>Lista Utworów Biblioteki Domowej</h2>
-
-<table>
-    <thead>
-        <th>Tytuł</th>
-        <th>Zespół</th>
-        <th>Rodzaj muzyki</th>
-        <th>Actions</th>
-    </thead>
-    {% for song in songs %}
-    <tr>
-        <td>{{ song.title }}</td>
-        <td>{{ song.band }}</td>
-        <td>{{ song.genre }}</td>
-        <td>
-            <a href="/index/{{song.id}}">Delete</a>
-            <br>
-            <a href="/update/{{song.id}}">Update</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-<div>
-    <h2> Dodaj nowy utwór: </h2>
-    <form method="POST" action="/index.html/">
-        {{ form.hidden_tag() }}
-        <table>
-            {% for field in form if field.widget.input_type != 'hidden' %}
-            <tr>
-                <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
-                <td>{{ field }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <input type="submit" value="Submit"><br>
-    </form>
-    <br>
-    <h1 class="comment"> Fields market with " * " are required.</h1>
+<h1>Lista Utworów Biblioteki Domowej</h1>
+<div class="song_list">
+    <table>
+        <thead>
+            <th>Tytuł</th>
+            <th>Zespół</th>
+            <th>Rodzaj muzyki</th>
+            <th>Actions</th>
+        </thead>
+        {% for song in songs %}
+        <tr>
+            <td>{{ song.title }}</td>
+            <td>{{ song.band }}</td>
+            <td>{{ song.genre }}</td>
+            <td>
+                <a href="/index/{{song.id}}">Delete</a>
+                <br>
+                <a href="/index/{{song.id}}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
-</body>
-{% endblock %}
+    <div class="add_song">
+        <h2> Dodaj nowy utwór: </h2>
+        <form method="POST" action="/index.html/">
+            {{ form.hidden_tag() }}
+            <table>
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+                {% endfor %}
+            </table><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+        <div class="footer">
+            <h3> Fields market with <span style="color: red; font-size: 12px;">" * "</span> are required.</h3>
+        </div>
+    </body>
+    {% endblock %}
