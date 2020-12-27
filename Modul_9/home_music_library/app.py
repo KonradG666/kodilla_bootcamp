@@ -19,9 +19,11 @@ def songs_list():
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/delete/<int:song_id>")
+@app.route("/index/<int:song_id>")
 def delete_song(song_id):
-    song = songs.delete(song_id)
+    form = MusicLibrary()
+    error = ""
+    song = songs.delete(song_id -1)
     if not song:
         abort(404)
         

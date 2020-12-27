@@ -1,4 +1,1 @@
-[
-    {"id":1,"title": "Make Them Suffer", "band": "Cannibal Corpse", "genre": "Death Metal"},
-    {"id":2,"title": "All Hope Is Gone", "band": "Slipknot", "genre": "Heavy Metal"}
-]
+[{"id": 2, "title": "All Hope Is Gone", "band": "Slipknot", "genre": "Heavy Metal"}, {"id":3, "title": "Make Them Suffer", "band": "Cannibal Corpse", "genre": "Death Metal"}, {"id":4, "title": "Erase Me", "band": "Make Them Suffer", "genre": "Metalcore"}]
