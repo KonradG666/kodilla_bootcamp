@@ -14,7 +14,7 @@ currency_list = new[4]
 
 
 def create_csv():
-    with open("lista_walut.csv", "w", newline="") as csvfile:
+    with open("currency_exchange_rates.csv", "w", newline="") as csvfile:
         filednames = ['currency', 'code', 'bid', 'ask']
         writer = csv.DictWriter(csvfile, fieldnames=filednames, delimiter=";")
         writer.writeheader()
