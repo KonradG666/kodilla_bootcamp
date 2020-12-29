@@ -12,7 +12,6 @@ for k,v in enumerate(data):
 #remove not dictionary objects
 currency_list = new[4]
 
-
 def create_csv():
     with open("currency_exchange_rates.csv", "w", newline="") as csvfile:
         filednames = ['currency', 'code', 'bid', 'ask']

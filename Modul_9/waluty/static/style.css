@@ -12,8 +12,7 @@ h2 {
     font-size: 30px;
 }
 h3 {
-    font-size: 15px;
-    
+    font-size: 15px;    
 }
 h4 {
     font-size: 40px;
@@ -21,10 +20,8 @@ h4 {
     margin-top: 10px;
 }
 
-
 .content {
     margin: 0 auto;
-
 }
 
 body {
@@ -34,5 +31,4 @@ body {
 .result {
     color: rgb(255, 140, 0);
     font-size: 35px;
-
 }
