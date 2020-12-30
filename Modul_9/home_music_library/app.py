@@ -19,21 +19,24 @@ def songs_list():
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>/delete", methods=["POST"])
+@app.route("/index/<int:song_id>/delete", methods=["GET"])
 def delete_song(song_id):
+    print(song_id)
     form = MusicLibrary()
     error = ""
     song = songs.delete(song_id-1)
+    print(song)
+    print(song_id)
+    print(songs.delete(song_id-1))
     if not song:
         abort(404)
         
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>/update", methods=["PUT"])
+@app.route("/index/<int:song_id>/update", methods=["GET"])
 def update_song(song_id):
-    song = song.get(song_id)
-    return "song {song} updated"
+    return "song updated"
     
 
 
