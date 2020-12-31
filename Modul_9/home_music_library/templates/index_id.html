@@ -7,7 +7,7 @@
 {% block body %}
 <body>
     <h2> Change: </h2>
-    <form method="POST" action="/songs/{{ song_id }}/">
+    <form method="POST" action="/index/{{ song_id }}/">
         {{ form.hidden_tag() }}
         <table>
             {% for field in form if field.widget.input_type != 'hidden' %}
@@ -16,8 +16,8 @@
                     <td>{{ field }}</td>
                 </tr>
             {% endfor %}
-        </table>
-        <input type="submit" value="Go">
+        </table><br>
+        <input type="submit" value="Submit Changes">
     </form>
 </body>
 {% endblock %}
