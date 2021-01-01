@@ -19,20 +19,32 @@ def songs_list():
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>", methods=["DELETE"])
+@app.route("/index/<int:song_id>/delete", methods=["GET"])
 def delete_song(song_id):
     form = MusicLibrary()
     error = ""
     song = songs.delete(song_id-1)
+    print(song)
+    print(song_id)
     if not song:
         abort(404)
         
     return render_template("index.html", form=form, songs=songs.all(), error=error)
 
 
-@app.route("/index/<int:song_id>", methods=["PUT"])
+@app.route("/index/<int:song_id>/update", methods=["GET", "POST"])
 def update_song(song_id):
-    pass
+    song = songs.get(song_id-1)
+    form = MusicLibrary(data=song)
+    error = ""
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+            songs.update(song_id - 1, form.data)
+        return redirect(url_for("songs_list"))
+
+    return render_template("index_id.html", form=form, song_id=song_id, error=error)
+
 
 
 @app.errorhandler(400)
