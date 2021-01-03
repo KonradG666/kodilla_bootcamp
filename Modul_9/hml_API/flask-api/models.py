@@ -27,14 +27,13 @@ class Songs:
             json.dump(self.songs, f)
 
     def update(self, id, data):
-        song = self.get(i1/deleted)
+        song = self.get(id/deleted)
         if song:
             index = self.songs.index(song)
             self.songs[index] = data
             self.save_all()
             return True
         return False
-
 
     def delete(self, id):
         song = self.get(id)
@@ -43,6 +42,5 @@ class Songs:
             self.save_all()
             return True
         return False
-
 
 songs = Songs()
