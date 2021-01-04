@@ -6,12 +6,12 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "nininini"
 
 
-@app.route("/api/v1/songs/all", methods=["GET"])
+@app.route("/api/v1/songs", methods=["GET"])
 def songs_list_api():
     return jsonify(songs.all())
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["GET"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["GET"])
 def get_song(song_id):
     song = songs.get(song_id)
     if not song:
@@ -19,7 +19,7 @@ def get_song(song_id):
     return jsonify({"song": song})
 
 
-@app.route("/api/v1/songs/add/", methods=["POST"])
+@app.route("/api/v1/songs/", methods=["POST"])
 def add_song():
     if not request.json or not "title" in request.json:
         abort(400)
@@ -33,7 +33,7 @@ def add_song():
     return jsonify({"song": song}), 201
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["DELETE"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["DELETE"])
 def delete_song(song_id):
     result = songs.delete(song_id)
     if not result:
@@ -41,7 +41,7 @@ def delete_song(song_id):
     return jsonify({"result": result})
 
 
-@app.route("/api/v1/songs/<int:song_id>", methods=["PUT"])
+@app.route("/api/v1/songs/<int:song_id>/", methods=["PUT"])
 def update_song(song_id):
     song = songs.get(song_id)
     if not song:
